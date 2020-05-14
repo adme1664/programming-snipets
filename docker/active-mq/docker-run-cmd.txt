@@ -1,0 +1,9 @@
+#run activemq and keep configuration and data on host repository
+docker run -p 61616:61616 -p 8161:8161 -v F:/Data/docker-images/docker-activemq/conf:/opt/activemq/conf  -v F:/Data/docker-images/docker-activemq/data:/opt/activemq/data rmohr/activemq
+#copy open bash
+docker run --user root --rm -ti -v F:/Data/docker-images/docker-activemq/conf:/mnt/conf -v F:/Data/docker-images/docker-activemq/data:/mnt/data rmohr/activemq /bin/sh
+#copy activemq.xml
+chown activemq:activemq /mnt/conf
+chown activemq:activemq /mnt/data
+cp -a /opt/activemq/conf/* /mnt/conf/
+cp -a /opt/activemq/data/* /mnt/data/

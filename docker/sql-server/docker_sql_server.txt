@@ -1,0 +1,17 @@
+#run the server container
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" \
+   -p 1433:1433 --name sql1 \ the image name
+
+#run the server and create a backup of the data, databases etc...
+docker run -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=EdgeP@ss220' -p 1433:1433 -v F:/Data/docker-images/docker-sqlserver/data:/var/opt/mssql/data -v F:/Data/docker-images/docker-sqlserver/log:/var/opt/mssql/log -v F:/Data/docker-images/docker-sqlserver/secrets:/var/opt/mssql/secrets -d #the image name
+#run the bash 
+docker exec -it "name of the container" "bash"
+
+#To connect to the of sqlserver
+/opt/mssql-tools/bin/sqlcmd -S "server name or ip adress" -U #username# -P #password#
+
+#To connect to the image sqlserver outside the container
+1- first get the ip of the container
+docker inspect #the container id#
+2- Add a route to the routing table
+route /P add 172.17.0.0 MASK 255.255.0.0 10.0.75.2

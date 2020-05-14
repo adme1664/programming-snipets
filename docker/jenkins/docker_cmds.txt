@@ -1,0 +1,7 @@
+
+
+Run Jenkins on docker
+docker run --rm -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v F:\workspace\Java:/home jenkins/blueocean
+jenkinsci/blueocean
+
+docker run --rm -ti -p 8080:8080 -p 50000:50000 -v jenkins-home:/var/jenkins_home -v F:\workspace\Java:/home jenkins/jenkins:jdk11
