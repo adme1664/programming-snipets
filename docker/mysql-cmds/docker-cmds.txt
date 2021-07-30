@@ -1,5 +1,5 @@
 1- Run the mysql image
-docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=EdgeP@ss220 -e MYSQL_ROOT_HOST=% -v F:/Data/docker-images/docker-mysql/data:/var/lib/mysql -d mysql
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=EdgeP@ss220 MYSQL_DATABASE=eccomar_db -e MYSQL_ROOT_HOST=% -v D:/Data/docker-images/docker-mysql/data:/var/lib/mysql -d mysql
 
 2- Acces the container
 docker exec -it <my_image_name> bash
@@ -7,7 +7,7 @@ docker exec -it <my_image_name> bash
 3-Connect to mysql
 mysql -u root -p
 
-docker run --detach --env MYSQL_ROOT_PASSWORD=EdgeP@ss220 --env MYSQL_USER=admin --env MYSQL_PASSWORD=EdgeP@ss220 --env MYSQL_DATABASE=employee_db --name mysql --publish 3306:3306 mysql:5.7
+docker run --detach --env MYSQL_ROOT_PASSWORD=EdgeP@ss220 --env MYSQL_USER=admin --env MYSQL_PASSWORD=EdgeP@ss220 --env MYSQL_DATABASE=eccomar_db --name mysql --publish 3306:3306 mysql
 
 #Lancer mysql avec 2 base de donnees
 docker run --name  mysql_server --env MYSQL_ROOT_PASSWORD=EdgeP@ss220 --env MYSQL_USER=admin --env MYSQL_PASSWORD=EdgeP@ss220 --env MYSQL_DATABASE=employee_db  --publish 3306:3306 -d  mysql_server
